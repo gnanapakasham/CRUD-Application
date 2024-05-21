@@ -1,4 +1,5 @@
 import mysql.connector
+from tabulate import tabulate
 
 con = mysql.connector.connect(host='localhost', user='root', password='root', database='testdb')
 
@@ -35,7 +36,7 @@ def show():
     sqlquery = "select * from studentdb"
     res.execute(sqlquery)
     result = res.fetchall()
-    print("Student Details", result)
+    print(tabulate(result, headers=["ID", "NAME", "AGE", "CITY"]))
 
 
 input_banner = """
